@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Freight quotes" %>
+
+<h1>Freight quotes</h1>
+
+<div id="freight_quotes">
+  <% @freight_quotes.each do |freight_quote| %>
+    <%= render freight_quote %>
+    <p>
+      <%= link_to "Show this freight quote", freight_quote %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New freight quote", new_freight_quote_path %>

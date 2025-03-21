@@ -1,0 +1,2 @@
+class FreightQuote < ApplicationRecord
+end

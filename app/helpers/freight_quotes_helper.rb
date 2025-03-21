@@ -1,0 +1,2 @@
+module FreightQuotesHelper
+end

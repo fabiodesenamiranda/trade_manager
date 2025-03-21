@@ -1,0 +1,42 @@
+<%= form_with(model: export_process) do |form| %>
+  <% if export_process.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(export_process.errors.count, "error") %> prohibited this export_process from being saved:</h2>
+
+      <ul>
+        <% export_process.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :process_number, style: "display: block" %>
+    <%= form.text_field :process_number %>
+  </div>
+
+  <div>
+    <%= form.label :exporter, style: "display: block" %>
+    <%= form.text_field :exporter %>
+  </div>
+
+  <div>
+    <%= form.label :client, style: "display: block" %>
+    <%= form.text_field :client %>
+  </div>
+
+  <div>
+    <%= form.label :product_description, style: "display: block" %>
+    <%= form.textarea :product_description %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

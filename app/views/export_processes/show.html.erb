@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @export_process %>
+
+<div>
+  <%= link_to "Edit this export process", edit_export_process_path(@export_process) %> |
+  <%= link_to "Back to export processes", export_processes_path %>
+
+  <%= button_to "Destroy this export process", @export_process, method: :delete %>
+</div>

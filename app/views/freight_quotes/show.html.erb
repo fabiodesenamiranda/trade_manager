@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @freight_quote %>
+
+<div>
+  <%= link_to "Edit this freight quote", edit_freight_quote_path(@freight_quote) %> |
+  <%= link_to "Back to freight quotes", freight_quotes_path %>
+
+  <%= button_to "Destroy this freight quote", @freight_quote, method: :delete %>
+</div>

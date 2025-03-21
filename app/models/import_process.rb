@@ -1,0 +1,2 @@
+class ImportProcess < ApplicationRecord
+end

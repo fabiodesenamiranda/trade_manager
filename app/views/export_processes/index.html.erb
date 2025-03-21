@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Export processes" %>
+
+<h1>Export processes</h1>
+
+<div id="export_processes">
+  <% @export_processes.each do |export_process| %>
+    <%= render export_process %>
+    <p>
+      <%= link_to "Show this export process", export_process %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New export process", new_export_process_path %>

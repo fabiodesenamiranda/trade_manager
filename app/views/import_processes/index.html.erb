@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Import processes" %>
+
+<h1>Import processes</h1>
+
+<div id="import_processes">
+  <% @import_processes.each do |import_process| %>
+    <%= render import_process %>
+    <p>
+      <%= link_to "Show this import process", import_process %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New import process", new_import_process_path %>
+<%= render ImportProcessCard.new(import_process: import_process) for import_process in @import_processes %>

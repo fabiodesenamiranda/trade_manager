@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Cost simulations" %>
+
+<h1>Cost simulations</h1>
+
+<div id="cost_simulations">
+  <% @cost_simulations.each do |cost_simulation| %>
+    <%= render cost_simulation %>
+    <p>
+      <%= link_to "Show this cost simulation", cost_simulation %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New cost simulation", new_cost_simulation_path %>

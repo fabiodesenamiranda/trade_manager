@@ -1,0 +1,12 @@
+<% content_for :title, "Editing cost simulation" %>
+
+<h1>Editing cost simulation</h1>
+
+<%= render "form", cost_simulation: @cost_simulation %>
+
+<br>
+
+<div>
+  <%= link_to "Show this cost simulation", @cost_simulation %> |
+  <%= link_to "Back to cost simulations", cost_simulations_path %>
+</div>

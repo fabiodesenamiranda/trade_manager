@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  process_number: MyString
+  importer: MyString
+  supplier: MyString
+  product_description: MyText
+  status: MyString
+
+two:
+  process_number: MyString
+  importer: MyString
+  supplier: MyString
+  product_description: MyText
+  status: MyString

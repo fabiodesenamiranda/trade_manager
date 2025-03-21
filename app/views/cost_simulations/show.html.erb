@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cost_simulation %>
+
+<div>
+  <%= link_to "Edit this cost simulation", edit_cost_simulation_path(@cost_simulation) %> |
+  <%= link_to "Back to cost simulations", cost_simulations_path %>
+
+  <%= button_to "Destroy this cost simulation", @cost_simulation, method: :delete %>
+</div>

@@ -1,0 +1,2 @@
+class CostSimulation < ApplicationRecord
+end

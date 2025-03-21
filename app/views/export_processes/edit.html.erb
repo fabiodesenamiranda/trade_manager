@@ -1,0 +1,12 @@
+<% content_for :title, "Editing export process" %>
+
+<h1>Editing export process</h1>
+
+<%= render "form", export_process: @export_process %>
+
+<br>
+
+<div>
+  <%= link_to "Show this export process", @export_process %> |
+  <%= link_to "Back to export processes", export_processes_path %>
+</div>

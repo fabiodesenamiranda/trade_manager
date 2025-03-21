@@ -1,0 +1,2 @@
+module CostSimulationsHelper
+end

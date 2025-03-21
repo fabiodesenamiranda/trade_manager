@@ -1,0 +1,12 @@
+<% content_for :title, "Editing freight quote" %>
+
+<h1>Editing freight quote</h1>
+
+<%= render "form", freight_quote: @freight_quote %>
+
+<br>
+
+<div>
+  <%= link_to "Show this freight quote", @freight_quote %> |
+  <%= link_to "Back to freight quotes", freight_quotes_path %>
+</div>

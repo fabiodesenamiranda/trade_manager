@@ -1,0 +1,2 @@
+class ExportProcess < ApplicationRecord
+end
