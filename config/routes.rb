@@ -1,20 +1,30 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :users
-  resources :cost_simulations
-  resources :freight_quotes
+  resources :contacts
+  resources :agents
+  # Página inicial do sistema
+  root "dashboards#index"
+
+  # Recursos principais
+  resources :import_processes do
+    member do
+      patch :update_status # Atualização assíncrona de status via Turbo Streams
+    end
+  end
+
   resources :export_processes
-  resources :import_processes
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :freight_quotes
+  resources :cost_simulations
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # Gerenciamento de usuários com Devise
+  devise_for :users
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  # Dashboard e análise de dados
+  get "dashboard", to: "dashboards#index"
+  get "reports", to: "reports#index"
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Sidekiq Web UI para monitorar tarefas assíncronas
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => "/sidekiq"
+  end
 end

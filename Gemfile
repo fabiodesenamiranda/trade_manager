@@ -65,5 +65,12 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+gem 'phlex'
+gem 'phlex-rails'
 
-gem "phlex", "~> 2.1"
+
+gem "sidekiq", "~> 8.0"
+gem "sidekiq-cron", "~> 1.2"
+gem "sidekiq-scheduler", "~> 3.0"
+
+gem 'importmap-rails'

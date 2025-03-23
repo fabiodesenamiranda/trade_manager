@@ -1,0 +1,7 @@
+:scheduler:
+  :schedule:
+    update_import_status
+    # Run every 10 minutes
+    every_5_minutes:
+      class: "UpdateImportStatusJob"
+      cron: "*/10 * * * *"

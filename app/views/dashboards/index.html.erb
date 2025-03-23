@@ -1,0 +1,22 @@
+<h1 class="text-xl font-bold mb-4">Dashboard</h1>
+
+<h2 class="text-lg font-semibold">Últimos Processos de Importação</h2>
+<% @import_processes.each do |p| %>
+  <%= raw ImportProcessCard.new(import_process: p).call %>
+<% end %>
+
+<h2 class="text-lg font-semibold">Últimos Processos de Exportação</h2>
+<% @export_processes.each do |p| %>
+  <%= raw ExportProcessCard.new(export_process: p).call %>
+<% end %>
+
+<h2 class="text-lg font-semibold">Últimos Orçamentos de Frete</h2>
+<% @latest_freight_quotes.each do |f| %>
+  <%= raw FreightQuoteCard.new(freight_quote: f).call %>
+<% end %>
+
+<% if @latest_exchange_rate %>
+  <p>Última Taxa de Câmbio: 1 USD = R$ <%= @latest_exchange_rate.rate %></p>
+<% else %>
+  <p>Última Taxa de Câmbio: Não disponível</p>
+<% end %>

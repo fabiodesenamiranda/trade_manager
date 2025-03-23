@@ -10,9 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_21_190858) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_23_115736) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "agents", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "country"
+    t.string "state"
+    t.string "address"
+    t.string "number"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "zip_code"
+    t.integer "agent_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.bigint "agent_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_contacts_on_agent_id"
+  end
 
   create_table "cost_simulations", force: :cascade do |t|
     t.string "product"
@@ -21,6 +47,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_21_190858) do
     t.decimal "insurance"
     t.decimal "import_taxes"
     t.decimal "total_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exchange_rates", force: :cascade do |t|
+    t.decimal "rate"
+    t.datetime "recorded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,4 +101,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_21_190858) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "contacts", "agents"
 end
