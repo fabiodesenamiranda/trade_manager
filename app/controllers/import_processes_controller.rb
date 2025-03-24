@@ -1,9 +1,10 @@
 class ImportProcessesController < ApplicationController
   before_action :set_import_process, only: %i[ show edit update destroy ]
+  before_action :set_agents_and_products, only: %i[ new edit create update ]
 
   # GET /import_processes or /import_processes.json
   def index
-    @import_processes = ImportProcess.all
+    @import_processes = ImportProcess.includes(:supplier, :products).all
   end
 
   # GET /import_processes/1 or /import_processes/1.json
@@ -58,13 +59,28 @@ class ImportProcessesController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_import_process
       @import_process = ImportProcess.find(params[:id])
     end
 
+    def set_agents_and_products
+      @suppliers = Agent.where(agent_type: ["Fornecedor", "Exportador"])
+      @products = Product.all
+    end
+
     # Only allow a list of trusted parameters through.
     def import_process_params
-      params.require(:import_process).permit(:process_number, :importer, :supplier, :product_description, :status)
+      params.require(:import_process).permit(
+        :process_number, 
+        :invoice_number, 
+        :invoice_date, 
+        :supplier_id, 
+        :incoterm, 
+        :payment_term, 
+        :status, 
+        product_ids: []
+      )
     end
 end

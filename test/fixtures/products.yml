@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codigo: MyString
+  descricao: MyString
+  ncm: MyString
+  unidade: MyString
+  peso: 9.99
+  embalagem: MyString
+  agente: one
+
+two:
+  codigo: MyString
+  descricao: MyString
+  ncm: MyString
+  unidade: MyString
+  peso: 9.99
+  embalagem: MyString
+  agente: two

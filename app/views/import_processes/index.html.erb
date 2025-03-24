@@ -4,6 +4,7 @@
 
 <h1>Import processes</h1>
 
+<!-- filepath: /home/fabio/Documentos/trade_manager/trade_manager/app/views/import_processes/index.html.erb -->
 <div id="import_processes">
   <% @import_processes.each do |import_process| %>
     <%= render import_process %>
@@ -14,6 +15,7 @@
 </div>
 
 <%= link_to "New import process", new_import_process_path %>
+
 <% @import_processes.each do |import_process| %>
   <%= render ImportProcessCard.new(import_process: import_process) %>
 <% end %>

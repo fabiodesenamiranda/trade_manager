@@ -1,42 +1,44 @@
-<%= form_with(model: import_process) do |form| %>
-  <% if import_process.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(import_process.errors.count, "error") %> prohibited this import_process from being saved:</h2>
-
-      <ul>
-        <% import_process.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with(model: import_process, local: true) do |form| %>
+  <div data-controller="import-processes">
+    <div class="field">
+      <%= form.label :invoice_number, "Número da Invoice" %>
+      <%= form.text_field :invoice_number %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :process_number, style: "display: block" %>
-    <%= form.text_field :process_number %>
-  </div>
+    <div class="field">
+      <%= form.label :invoice_date, "Data da Invoice" %>
+      <%= form.date_field :invoice_date %>
+    </div>
 
-  <div>
-    <%= form.label :importer, style: "display: block" %>
-    <%= form.text_field :importer %>
-  </div>
+    <div class="field">
+      <%= form.label :supplier_id, "Fornecedor/Exportador" %>
+      <%= form.collection_select :supplier_id, Agent.all, :id, :name, include_blank: "Selecione um fornecedor/exportador" %>
+    </div>
 
-  <div>
-    <%= form.label :supplier, style: "display: block" %>
-    <%= form.text_field :supplier %>
-  </div>
+    <div class="field">
+      <%= form.label :incoterm, "Incoterm" %>
+      <%= form.select :incoterm, ImportProcess.incoterms.map { |k, v| [k.upcase.gsub("_", " "), v] }, include_blank: "Selecione o Incoterm" %>
+    </div>
 
-  <div>
-    <%= form.label :product_description, style: "display: block" %>
-    <%= form.textarea :product_description %>
-  </div>
+    <div class="field">
+      <%= form.label :payment_term, "Termo de Pagamento" %>
+      <%= form.select :payment_term, ImportProcess.payment_terms.keys.map { |key| [key, key] }, include_blank: "Selecione o Termo de Pagamento" %>
+    </div>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
+    <h3>Produtos</h3>
+    <div id="products" data-import-processes-target="products">
+      <%= form.fields_for :import_process_products do |product_form| %>
+        <div class="nested-fields">
+          <%= product_form.collection_select :product_id, Product.all, :id, :name, include_blank: "Selecione um produto" %>
+          <button type="button" class="remove_product" data-action="click->import-processes#removeProduct">Remover</button>
+        </div>
+      <% end %>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <button type="button" class="add_product" data-action="click->import-processes#addProduct">Adicionar Produto</button>
+
+    <div class="actions">
+      <%= form.submit "Salvar" %>
+    </div>
   </div>
 <% end %>

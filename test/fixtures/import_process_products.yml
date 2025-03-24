@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  import_process: one
+  product: one
+
+two:
+  import_process: two
+  product: two

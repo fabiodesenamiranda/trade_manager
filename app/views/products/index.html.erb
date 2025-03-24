@@ -1,0 +1,26 @@
+<h1>Lista de Produtos</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Descrição</th>
+      <th>Embalagem</th>
+      <th>Agente</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr id="<%= dom_id product %>">
+        <td><%= product.codigo %></td>
+        <td><%= product.descricao %></td>
+        <td><%= product.embalagem %></td>
+        <td><%= product.agent.name if product.agent.present? %></td>
+        <td>
+          <%= link_to "Ver", product_path(product), class: "btn btn-primary btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

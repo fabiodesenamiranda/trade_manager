@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_23_115736) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_23_194950) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -60,7 +60,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_23_115736) do
 
   create_table "export_processes", force: :cascade do |t|
     t.string "process_number"
-    t.string "exporter"
+    t.string "supplier"
     t.string "client"
     t.text "product_description"
     t.string "status"
@@ -77,6 +77,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_23_115736) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "import_process_products", force: :cascade do |t|
+    t.bigint "import_process_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["import_process_id"], name: "index_import_process_products_on_import_process_id"
+    t.index ["product_id"], name: "index_import_process_products_on_product_id"
+  end
+
   create_table "import_processes", force: :cascade do |t|
     t.string "process_number"
     t.string "importer"
@@ -85,6 +94,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_23_115736) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "invoice_number"
+    t.date "invoice_date"
+    t.integer "incoterm"
+    t.integer "payment_term"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "codigo"
+    t.string "descricao"
+    t.string "ncm"
+    t.string "unidade"
+    t.decimal "peso"
+    t.string "embalagem"
+    t.bigint "agent_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_products_on_agent_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,4 +129,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_23_115736) do
   end
 
   add_foreign_key "contacts", "agents"
+  add_foreign_key "import_process_products", "import_processes"
+  add_foreign_key "import_process_products", "products"
+  add_foreign_key "products", "agents"
 end

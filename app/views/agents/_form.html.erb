@@ -63,7 +63,7 @@
 
   <div>
     <%= form.label :agent_type, style: "display: block" %>
-    <%= form.number_field :agent_type %>
+    <%= form.select :agent_type, Agent.agent_types.map { |key, _| [key.humanize, key] }, { prompt: "Selecione o tipo de agente" }%>
   </div>
 
   <div>

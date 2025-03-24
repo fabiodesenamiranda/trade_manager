@@ -1,0 +1,37 @@
+<div id="<%= dom_id product %>">
+  <p>
+    <strong>Codigo:</strong>
+    <%= product.codigo %>
+  </p>
+
+  <p>
+    <strong>Descricao:</strong>
+    <%= product.descricao %>
+  </p>
+
+  <p>
+    <strong>Ncm:</strong>
+    <%= product.ncm %>
+  </p>
+
+  <p>
+    <strong>Unidade:</strong>
+    <%= product.unidade %>
+  </p>
+
+  <p>
+    <strong>Peso:</strong>
+    <%= product.peso %>
+  </p>
+
+  <p>
+    <strong>Embalagem:</strong>
+    <%= product.embalagem %>
+  </p>
+
+  <p>
+    <strong>Agente:</strong>
+    <%= product.agent.name if product.agent.present? %>
+  </p>
+
+</div>

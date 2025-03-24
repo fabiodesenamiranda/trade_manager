@@ -1,16 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<h1>Lista de Agentes</h1>
 
-<% content_for :title, "Agents" %>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @agents.each do |agent| %>
+      <tr>
+        <td><%= agent.name %></td>
+        <td><%= agent.email %></td>
+        <td><%= agent.phone %></td>
+        <td>
+          <%= link_to "VER", agent_path(agent), class: "btn btn-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<h1>Agents</h1>
-
-<div id="agents">
-  <% @agents.each do |agent| %>
-    <%= render agent %>
-    <p>
-      <%= link_to "Show this agent", agent %>
-    </p>
-  <% end %>
-</div>
 
 <%= link_to "New agent", new_agent_path %>
