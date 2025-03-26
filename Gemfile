@@ -70,7 +70,7 @@ gem 'phlex-rails'
 
 
 gem "sidekiq", "~> 8.0"
-gem "sidekiq-cron", "~> 1.2"
+gem "sidekiq-cron", "~> 2.2"
 gem "sidekiq-scheduler", "~> 3.0"
 
 gem 'importmap-rails'
