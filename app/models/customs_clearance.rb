@@ -1,0 +1,2 @@
+class CustomsClearance < ApplicationRecord
+end

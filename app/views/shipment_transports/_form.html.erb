@@ -1,0 +1,122 @@
+<%= form_with(model: shipment_transport) do |form| %>
+  <% if shipment_transport.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(shipment_transport.errors.count, "error") %> prohibited this shipment_transport from being saved:</h2>
+
+      <ul>
+        <% shipment_transport.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :reference, style: "display: block" %>
+    <%= form.text_field :reference %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transport_mode %>
+    <%= form.select :transport_mode, ShipmentTransport.transport_modes.keys.map { |mode| [ShipmentTransport.transport_modes[mode], mode] }, { prompt: "Selecione o modo de transporte" } %>
+  </div>
+
+  <div>
+    <%= form.label :origin_country, style: "display: block" %>
+    <%= form.text_field :origin_country %>
+  </div>
+
+  <div>
+    <%= form.label :destination_country, style: "display: block" %>
+    <%= form.text_field :destination_country %>
+  </div>
+
+  <div>
+    <%= form.label :origin_port, style: "display: block" %>
+    <%= form.text_field :origin_port %>
+  </div>
+
+  <div>
+    <%= form.label :destination_port, style: "display: block" %>
+    <%= form.text_field :destination_port %>
+  </div>
+
+  <div>
+    <%= form.label :net_weight, style: "display: block" %>
+    <%= form.text_field :net_weight %>
+  </div>
+
+  <div>
+    <%= form.label :gross_weight, style: "display: block" %>
+    <%= form.text_field :gross_weight %>
+  </div>
+
+  <div>
+    <%= form.label :cubic_volume, style: "display: block" %>
+    <%= form.text_field :cubic_volume %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equipment_type %>
+    <%= form.select :equipment_type, ShipmentTransport.equipment_types.keys.map { |equip| [ShipmentTransport.equipment_types[equip], equip] }, { prompt: "Selecione o tipo de equipamento" } %>
+  </div>
+
+  <div>
+    <%= form.label :transit_time, style: "display: block" %>
+    <%= form.number_field :transit_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shipment_type %>
+    <%= form.select :shipment_type, ShipmentTransport.shipment_types.keys.map { |type| [ShipmentTransport.shipment_types[type], type] }, { prompt: "Selecione o tipo de embarque" } %>
+  </div>
+
+  <div>
+    <%= form.label :free_time, style: "display: block" %>
+    <%= form.number_field :free_time %>
+  </div>
+
+  <div>
+    <%= form.label :route, style: "display: block" %>
+    <%= form.text_field :route %>
+  </div>
+
+  <div>
+    <%= form.label :eta, style: "display: block" %>
+    <%= form.date_field :eta %>
+  </div>
+
+  <div>
+    <%= form.label :etd, style: "display: block" %>
+    <%= form.date_field :etd %>
+  </div>
+
+  <div>
+    <%= form.label :shipping_company, style: "display: block" %>
+    <%= form.text_field :shipping_company %>
+  </div>
+
+  <div>
+    <%= form.label :shipping_agency, style: "display: block" %>
+    <%= form.text_field :shipping_agency %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transport_doc_type %>
+    <%= form.select :transport_doc_type, ShipmentTransport.transport_doc_types.keys.map { |doc| [ShipmentTransport.transport_doc_types[doc], doc] }, { prompt: "Selecione o tipo de documento" } %>
+  </div>
+
+  <div>
+    <%= form.label :transport_doc_number, style: "display: block" %>
+    <%= form.text_field :transport_doc_number %>
+  </div>
+
+  <div>
+    <%= form.label :transport_doc_date, style: "display: block" %>
+    <%= form.date_field :transport_doc_date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

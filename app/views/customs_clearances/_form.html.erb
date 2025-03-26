@@ -1,0 +1,77 @@
+<%= form_with(model: customs_clearance) do |form| %>
+  <% if customs_clearance.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(customs_clearance.errors.count, "error") %> prohibited this customs_clearance from being saved:</h2>
+
+      <ul>
+        <% customs_clearance.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :reference, style: "display: block" %>
+    <%= form.text_field :reference %>
+  </div>
+
+  <div>
+    <%= form.label :import_license, style: "display: block" %>
+    <%= form.text_field :import_license %>
+  </div>
+
+  <div>
+    <%= form.label :import_license_date, style: "display: block" %>
+    <%= form.date_field :import_license_date %>
+  </div>
+
+  <div>
+    <%= form.label :import_license_type, style: "display: block" %>
+    <%= form.text_field :import_license_type %>
+  </div>
+
+  <div>
+    <%= form.label :import_declaration, style: "display: block" %>
+    <%= form.text_field :import_declaration %>
+  </div>
+
+  <div>
+    <%= form.label :import_declaration_date, style: "display: block" %>
+    <%= form.date_field :import_declaration_date %>
+  </div>
+
+  <div>
+    <%= form.label :parametrization_channel, style: "display: block" %>
+    <%= form.text_field :parametrization_channel %>
+  </div>
+
+  <div>
+    <%= form.label :di_status, style: "display: block" %>
+    <%= form.text_field :di_status %>
+  </div>
+
+  <div>
+    <%= form.label :import_type, style: "display: block" %>
+    <%= form.text_field :import_type %>
+  </div>
+
+  <div>
+    <%= form.label :cargo_location, style: "display: block" %>
+    <%= form.text_field :cargo_location %>
+  </div>
+
+  <div>
+    <%= form.label :customs_costs, style: "display: block" %>
+    <%= form.text_field :customs_costs %>
+  </div>
+
+  <div>
+    <%= form.label :documentation, style: "display: block" %>
+    <%= form.textarea :documentation %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

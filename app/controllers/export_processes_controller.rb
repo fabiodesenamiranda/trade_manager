@@ -65,6 +65,6 @@ class ExportProcessesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def export_process_params
-      params.expect(export_process: [ :process_number, :exporter, :client, :product_description, :status ])
+      params.expect(export_process: [ :process_number, :supplier, :client, :product_description, :status ])
     end
 end

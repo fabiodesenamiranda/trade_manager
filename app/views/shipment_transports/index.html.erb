@@ -1,0 +1,61 @@
+<h1>Lista de Transportes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Referência</th>
+      <th>Modo de Transporte</th>
+      <th>Origem</th>
+      <th>Destino</th>
+      <th>Porto de Origem</th>
+      <th>Porto de Destino</th>
+      <th>Peso Líquido</th>
+      <th>Peso Bruto</th>
+      <th>Volume</th>
+      <th>Equipamento</th>
+      <th>Tempo de Trânsito</th>
+      <th>Tipo de Embarque</th>
+      <th>Tempo Livre</th>
+      <th>Rota</th>
+      <th>ETA</th>
+      <th>ETD</th>
+      <th>Companhia de Transporte</th>
+      <th>Agência</th>
+      <th>Tipo Doc. Transporte</th>
+      <th>Número Doc.</th>
+      <th>Data Doc.</th>
+      <th colspan="2">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shipment_transports.each do |shipment| %>
+      <tr>
+        <td><%= shipment.reference %></td>
+        <td><%= shipment.transport_mode %></td>
+        <td><%= shipment.origin_country %></td>
+        <td><%= shipment.destination_country %></td>
+        <td><%= shipment.origin_port %></td>
+        <td><%= shipment.destination_port %></td>
+        <td><%= shipment.net_weight %></td>
+        <td><%= shipment.gross_weight %></td>
+        <td><%= shipment.cubic_volume %></td>
+        <td><%= shipment.equipment_type %></td>
+        <td><%= shipment.transit_time %></td>
+        <td><%= shipment.shipment_type %></td>
+        <td><%= shipment.free_time %></td>
+        <td><%= shipment.route %></td>
+        <td><%= shipment.eta %></td>
+        <td><%= shipment.etd %></td>
+        <td><%= shipment.shipping_company %></td>
+        <td><%= shipment.shipping_agency %></td>
+        <td><%= shipment.transport_doc_type %></td>
+        <td><%= shipment.transport_doc_number %></td>
+        <td><%= shipment.transport_doc_date %></td>
+        <td><%= link_to 'Editar', edit_shipment_transport_path(shipment) %></td>
+        <td><%= link_to 'Deletar', shipment, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Novo Transporte', new_shipment_transport_path %>

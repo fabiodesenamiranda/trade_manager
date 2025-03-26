@@ -14,9 +14,9 @@
     <%= contact.phone %>
   </p>
 
-  <p>
-    <strong>Agent:</strong>
-    <%= contact.agent_id %>
-  </p>
+<p>
+  <strong>Agente:</strong>
+  <%= contact.agent&.name || "Não informado" %>
+</p>
 
 </div>

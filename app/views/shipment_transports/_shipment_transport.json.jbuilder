@@ -1,0 +1,2 @@
+json.extract! shipment_transport, :id, :reference, :transport_mode, :origin_country, :destination_country, :origin_port, :destination_port, :net_weight, :gross_weight, :cubic_volume, :equipment_type, :transit_time, :shipment_type, :free_time, :route, :eta, :etd, :shipping_company, :shipping_agency, :transport_doc_type, :transport_doc_number, :transport_doc_date, :created_at, :updated_at
+json.url shipment_transport_url(shipment_transport, format: :json)

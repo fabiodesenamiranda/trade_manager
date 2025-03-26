@@ -1,5 +1,13 @@
 <%= form_with(model: import_process, local: true) do |form| %>
-  <div data-controller="import-processes">
+  <div data-controller="import-processes" 
+       data-import-processes-products-options="<%= CGI.escapeHTML(render('import_process_product_fields', f: form, product: Product.new)) %>"
+
+
+    <div class="field">
+      <%= form.label :process_number, "Número do Processo" %>
+      <%= form.text_field :process_number %>
+    </div>
+
     <div class="field">
       <%= form.label :invoice_number, "Número da Invoice" %>
       <%= form.text_field :invoice_number %>
@@ -11,25 +19,33 @@
     </div>
 
     <div class="field">
-      <%= form.label :supplier_id, "Fornecedor/Exportador" %>
-      <%= form.collection_select :supplier_id, Agent.all, :id, :name, include_blank: "Selecione um fornecedor/exportador" %>
+      <%= form.label :supplier_id, "Fornecedor" %>
+      <%= form.collection_select :supplier_id, Agent.all, :id, :name, include_blank: "Selecione um fornecedor" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :exporter_id, "Exportador" %>
+      <%= form.collection_select :exporter_id, Agent.all, :id, :name, include_blank: "Selecione um exportador" %>
     </div>
 
     <div class="field">
       <%= form.label :incoterm, "Incoterm" %>
-      <%= form.select :incoterm, ImportProcess.incoterms.map { |k, v| [k.upcase.gsub("_", " "), v] }, include_blank: "Selecione o Incoterm" %>
+      <%= form.select :incoterm, ImportProcess.incoterms.keys.map { |key| [key.humanize.upcase, key] }, include_blank: "Selecione um Incoterm" %>
     </div>
 
     <div class="field">
       <%= form.label :payment_term, "Termo de Pagamento" %>
-      <%= form.select :payment_term, ImportProcess.payment_terms.keys.map { |key| [key, key] }, include_blank: "Selecione o Termo de Pagamento" %>
+      <%= form.select :payment_term, ImportProcess.payment_terms.keys.map { |key| [key.humanize, key] }, include_blank: "Selecione" %>
     </div>
 
     <h3>Produtos</h3>
     <div id="products" data-import-processes-target="products">
       <%= form.fields_for :import_process_products do |product_form| %>
         <div class="nested-fields">
-          <%= product_form.collection_select :product_id, Product.all, :id, :name, include_blank: "Selecione um produto" %>
+          <%= product_form.collection_select :product_id, Product.all, :id, :descricao, include_blank: "Selecione um produto" %>
+          <%= product_form.number_field :quantity, placeholder: "Quantidade", min: 1, required: true %>
+          <%= product_form.text_field :price, placeholder: "Preço", required: true %>
+          <%= product_form.hidden_field :_destroy %>
           <button type="button" class="remove_product" data-action="click->import-processes#removeProduct">Remover</button>
         </div>
       <% end %>

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Customs clearances" %>
+
+<h1>Customs clearances</h1>
+
+<div id="customs_clearances">
+  <% @customs_clearances.each do |customs_clearance| %>
+    <%= render customs_clearance %>
+    <p>
+      <%= link_to "Show this customs clearance", customs_clearance %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New customs clearance", new_customs_clearance_path %>

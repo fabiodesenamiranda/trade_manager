@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reference: MyString
+  transport_mode: MyString
+  origin_country: MyString
+  destination_country: MyString
+  origin_port: MyString
+  destination_port: MyString
+  net_weight: 9.99
+  gross_weight: 9.99
+  cubic_volume: 9.99
+  equipment_type: MyString
+  transit_time: 1
+  shipment_type: MyString
+  free_time: 1
+  route: MyString
+  eta: 2025-03-26
+  etd: 2025-03-26
+  shipping_company: MyString
+  shipping_agency: MyString
+  transport_doc_type: MyString
+  transport_doc_number: MyString
+  transport_doc_date: 2025-03-26
+
+two:
+  reference: MyString
+  transport_mode: MyString
+  origin_country: MyString
+  destination_country: MyString
+  origin_port: MyString
+  destination_port: MyString
+  net_weight: 9.99
+  gross_weight: 9.99
+  cubic_volume: 9.99
+  equipment_type: MyString
+  transit_time: 1
+  shipment_type: MyString
+  free_time: 1
+  route: MyString
+  eta: 2025-03-26
+  etd: 2025-03-26
+  shipping_company: MyString
+  shipping_agency: MyString
+  transport_doc_type: MyString
+  transport_doc_number: MyString
+  transport_doc_date: 2025-03-26

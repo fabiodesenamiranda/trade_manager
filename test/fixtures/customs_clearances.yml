@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reference: MyString
+  import_license: MyString
+  import_license_date: 2025-03-26
+  import_license_type: MyString
+  import_declaration: MyString
+  import_declaration_date: 2025-03-26
+  parametrization_channel: MyString
+  di_status: MyString
+  import_type: MyString
+  cargo_location: MyString
+  customs_costs: 9.99
+  documentation: MyText
+
+two:
+  reference: MyString
+  import_license: MyString
+  import_license_date: 2025-03-26
+  import_license_type: MyString
+  import_declaration: MyString
+  import_declaration_date: 2025-03-26
+  parametrization_channel: MyString
+  di_status: MyString
+  import_type: MyString
+  cargo_location: MyString
+  customs_costs: 9.99
+  documentation: MyText

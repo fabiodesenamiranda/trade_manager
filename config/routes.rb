@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :customs_clearances
+  resources :shipment_transports
   resources :products
   resources :contacts
   resources :agents

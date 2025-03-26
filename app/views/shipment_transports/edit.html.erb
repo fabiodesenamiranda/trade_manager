@@ -1,0 +1,12 @@
+<% content_for :title, "Editing shipment transport" %>
+
+<h1>Editing shipment transport</h1>
+
+<%= render "form", shipment_transport: @shipment_transport %>
+
+<br>
+
+<div>
+  <%= link_to "Show this shipment transport", @shipment_transport %> |
+  <%= link_to "Back to shipment transports", shipment_transports_path %>
+</div>

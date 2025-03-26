@@ -21,6 +21,9 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%#= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <script>
+      window.productsOptions = `<%= Product.all.map { |p| "<option value='#{p.id}'>#{p.descricao}</option>" }.join('') %>`;
+    </script>
   </head>
 
   <body>

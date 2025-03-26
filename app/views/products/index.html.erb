@@ -1,26 +1,44 @@
-<h1>Lista de Produtos</h1>
-
-<table class="table">
+<table style="width: 100%; border-collapse: collapse;">
   <thead>
     <tr>
-      <th>Código</th>
-      <th>Descrição</th>
-      <th>Embalagem</th>
-      <th>Agente</th>
-      <th>Ações</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Código do Produto</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Descrição</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">NCM</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Unidade de Medida</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Peso Unitário </th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Tipo de Embalagem</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Fornecedor</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Ações</th>
     </tr>
   </thead>
   <tbody>
     <% @products.each do |product| %>
-      <tr id="<%= dom_id product %>">
-        <td><%= product.codigo %></td>
-        <td><%= product.descricao %></td>
-        <td><%= product.embalagem %></td>
-        <td><%= product.agent.name if product.agent.present? %></td>
-        <td>
-          <%= link_to "Ver", product_path(product), class: "btn btn-primary btn-sm" %>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= product.codigo %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= product.descricao %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= product.ncm %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= product.unidade %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= product.peso %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= product.embalagem %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= product.agent&.name || "Sem agente" %></td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+          <%= link_to edit_product_path(product), title: "Editar", style: "margin-right: 8px; text-decoration: none;" do %>
+            ✏️
+          <% end %>
+          <%= link_to product_path(product), title: "Ver", style: "margin-right: 8px; text-decoration: none;" do %>
+            👁️
+          <% end %>
+          <%= button_to product, method: :delete, data: { confirm: "Tem certeza que deseja excluir este produto?" }, title: "Excluir", style: "border: none; background: none; cursor: pointer; color: red;" do %>
+            ❌
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<div style="text-align: right; margin-top: 20px;">
+  <%= link_to new_product_path, title: "Novo Produto", style: "font-size: 20px; text-decoration: none; background: #28a745; color: white; padding: 10px 15px; border-radius: 5px; display: inline-block;" do %>
+    ➕ Novo Produto
+  <% end %>
+</div>

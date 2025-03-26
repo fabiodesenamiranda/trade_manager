@@ -1,0 +1,5 @@
+<div class="nested-fields">
+  <%= f.collection_select :product_id, Product.all, :id, :descricao, include_blank: "Selecione um produto" %>
+  <%= f.hidden_field :_destroy %>
+  <button type="button" class="remove_product" data-action="click->import-processes#removeProduct">Remover</button>
+</div>

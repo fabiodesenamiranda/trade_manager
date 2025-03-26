@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @customs_clearance %>
+
+<div>
+  <%= link_to "Edit this customs clearance", edit_customs_clearance_path(@customs_clearance) %> |
+  <%= link_to "Back to customs clearances", customs_clearances_path %>
+
+  <%= button_to "Destroy this customs clearance", @customs_clearance, method: :delete %>
+</div>

@@ -1,36 +1,37 @@
+<!-- filepath: /home/fabio/Documentos/trade_manager/trade_manager/app/views/products/_form.html.erb -->
 <%= form_with(model: product, local: true) do |f| %>
   <div class="field">
-    <%= f.label :codigo, "Código do Item" %>
+    <%= f.label :codigo, "Código do Produto" %>
     <%= f.text_field :codigo, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :descricao, "Descrição do Item" %>
+    <%= f.label :descricao, "Descrição" %>
     <%= f.text_field :descricao, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :ncm, "NCM do Item" %>
+    <%= f.label :ncm, "NCM" %>
     <%= f.text_field :ncm, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :unidade, "Unidade" %>
+    <%= f.label :unidade, "Unidade de Medida" %>
     <%= f.select :unidade, ["Kg", "Litro", "Metro"], { prompt: "Selecione a Unidade" }, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :peso, "Peso" %>
+    <%= f.label :peso, "Peso Unitário" %> <!-- Corrigido -->
     <%= f.text_field :peso, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :embalagem, "Embalagem" %>
+    <%= f.label :embalagem, "Tipo de Embalagem" %>
     <%= f.select :embalagem, ["Saco", "Caixa", "Pacote", "Frasco", "Galão", "Tambor"], { prompt: "Selecione a Embalagem" }, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :agent_id, "Agente" %>
+    <%= f.label :agent_id, "Fornecedor" %>
     <%= f.collection_select :agent_id, Agent.all, :id, :name, { prompt: "Selecione um Agente" }, class: "form-control select2" %>
   </div>
 

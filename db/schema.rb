@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_23_194950) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_26_143016) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -51,6 +51,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_23_194950) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customs_clearances", force: :cascade do |t|
+    t.string "reference"
+    t.string "import_license"
+    t.date "import_license_date"
+    t.string "import_license_type"
+    t.string "import_declaration"
+    t.date "import_declaration_date"
+    t.string "parametrization_channel"
+    t.string "di_status"
+    t.string "import_type"
+    t.string "cargo_location"
+    t.decimal "customs_costs"
+    t.text "documentation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "exchange_rates", force: :cascade do |t|
     t.decimal "rate"
     t.datetime "recorded_at"
@@ -60,7 +77,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_23_194950) do
 
   create_table "export_processes", force: :cascade do |t|
     t.string "process_number"
-    t.string "supplier"
+    t.string "exporter"
     t.string "client"
     t.text "product_description"
     t.string "status"
@@ -87,30 +104,60 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_23_194950) do
   end
 
   create_table "import_processes", force: :cascade do |t|
-    t.string "process_number"
-    t.string "importer"
+    t.string "reference"
     t.string "supplier"
-    t.text "product_description"
+    t.text "product"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "invoice_number"
     t.date "invoice_date"
-    t.integer "incoterm"
-    t.integer "payment_term"
+    t.string "incoterm"
+    t.string "payment_term"
+    t.integer "quantity"
+    t.decimal "unit_price", precision: 10, scale: 2
+    t.string "currency"
+    t.decimal "total_value", precision: 10, scale: 2
+    t.date "delivery_deadline"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "codigo"
-    t.string "descricao"
+    t.string "code"
+    t.string "description"
     t.string "ncm"
-    t.string "unidade"
-    t.decimal "peso"
-    t.string "embalagem"
+    t.string "unit"
+    t.decimal "weight"
+    t.string "packing"
     t.bigint "agent_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["agent_id"], name: "index_products_on_agent_id"
+  end
+
+  create_table "shipment_transports", force: :cascade do |t|
+    t.string "reference"
+    t.string "transport_mode"
+    t.string "origin_country"
+    t.string "destination_country"
+    t.string "origin_port"
+    t.string "destination_port"
+    t.decimal "net_weight"
+    t.decimal "gross_weight"
+    t.decimal "cubic_volume"
+    t.string "equipment_type"
+    t.integer "transit_time"
+    t.string "shipment_type"
+    t.integer "free_time"
+    t.string "route"
+    t.date "eta"
+    t.date "etd"
+    t.string "shipping_company"
+    t.string "shipping_agency"
+    t.string "transport_doc_type"
+    t.string "transport_doc_number"
+    t.date "transport_doc_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

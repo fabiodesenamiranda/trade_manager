@@ -1,16 +1,40 @@
-<p style="color: green"><%= notice %></p>
+<h1>Lista de Contatos</h1>
 
-<% content_for :title, "Contacts" %>
-
-<h1>Contacts</h1>
-
-<div id="contacts">
-  <% @contacts.each do |contact| %>
-    <%= render contact %>
-    <p>
-      <%= link_to "Show this contact", contact %>
-    </p>
+<table style="width: 100%; border-collapse: collapse;">
+  <thead>
+    <tr style="background-color: #f4f4f4;">
+      <th style="border: 1px solid #ddd; padding: 8px;">Nome</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Email</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Telefone</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Agente</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= contact.name %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= contact.email %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= contact.phone %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= contact.agent&.name || "Não informado" %></td>
+          <td style="border: 1px solid #ddd; padding: 8px;">
+            <%= link_to edit_contact_path(contact), title: "Editar", style: "margin-right: 10px; text-decoration: none; font-size: 18px;" do %>
+              ✏️
+            <% end %>
+            <%= link_to contact_path(contact), title: "Ver", style: "margin-right: 10px; text-decoration: none; font-size: 18px;" do %>
+              👁️
+            <% end %>
+            <%= button_to contact_path(contact), method: :delete, data: { confirm: "Tem certeza que deseja excluir este contato?" }, title: "Excluir", style: "border: none; background: none; cursor: pointer; color: red; font-size: 18px;" do %>
+              ❌
+            <% end %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- Botão Novo Contato -->
+<div style="margin-top: 20px; text-align: right;">
+  <%= link_to new_contact_path, title: "Novo Contato", style: "text-decoration: none; font-size: 18px; background: #28a745; color: white; padding: 10px 15px; border-radius: 5px; display: inline-block;" do %>
+    ➕ Novo Contato
   <% end %>
 </div>
-
-<%= link_to "New contact", new_contact_path %>

@@ -13,10 +13,13 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+    @agents = Agent.order(:name)
   end
 
   # GET /contacts/1/edit
   def edit
+    @contact = Contact.find(params[:id])
+    @agents = Agent.order(:name)
   end
 
   # POST /contacts or /contacts.json

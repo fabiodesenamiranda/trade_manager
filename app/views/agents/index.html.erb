@@ -1,27 +1,39 @@
 <h1>Lista de Agentes</h1>
 
-<table>
+<table style="width: 100%; border-collapse: collapse;">
   <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Email</th>
-      <th>Telefone</th>
-      <th>Ações</th>
+    <tr style="background-color: #f4f4f4;">
+      <th style="border: 1px solid #ddd; padding: 8px;">Nome</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Email</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Telefone</th>
+      <th style="border: 1px solid #ddd; padding: 8px; width: 150px; text-align: center;">Ações</th>
     </tr>
   </thead>
   <tbody>
     <% @agents.each do |agent| %>
       <tr>
-        <td><%= agent.name %></td>
-        <td><%= agent.email %></td>
-        <td><%= agent.phone %></td>
-        <td>
-          <%= link_to "VER", agent_path(agent), class: "btn btn-primary" %>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= agent.name %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= agent.email %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= agent.phone %></td>
+        <td style="border: 1px solid #ddd; padding: 8px; width: 150px; text-align: center;">
+          <%= link_to edit_agent_path(agent), title: "Editar", style: "margin-right: 10px; text-decoration: none; font-size: 18px;" do %>
+            ✏️
+          <% end %>
+          <%= link_to agent_path(agent), title: "Ver", style: "margin-right: 10px; text-decoration: none; font-size: 18px;" do %>
+            👁️
+          <% end %>
+          <%= button_to agent_path(agent), method: :delete, data: { confirm: "Tem certeza que deseja excluir este agente?" }, title: "Excluir", style: "border: none; background: none; cursor: pointer; color: red; font-size: 18px;" do %>
+            ❌
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-
-<%= link_to "New agent", new_agent_path %>
+<!-- Botão Novo Agente -->
+<div style="margin-top: 20px; text-align: right;">
+  <%= link_to new_agent_path, title: "Novo Agente", style: "text-decoration: none; font-size: 18px; background: #007bff; color: white; padding: 10px 15px; border-radius: 5px; display: inline-block;" do %>
+    ➕ Novo Agente
+  <% end %>
+</div>

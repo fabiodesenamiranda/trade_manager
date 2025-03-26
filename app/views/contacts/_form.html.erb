@@ -26,10 +26,10 @@
     <%= form.text_field :phone %>
   </div>
 
-  <div>
-    <%= form.label :agent_id, style: "display: block" %>
-    <%= form.text_field :agent_id %>
-  </div>
+<div>
+  <%= form.label :agent_id, "Selecionar Agente", style: "display: block" %>
+  <%= form.collection_select :agent_id, Agent.order(:name), :id, :name, prompt: "Selecione um agente" %>
+</div>
 
   <div>
     <%= form.submit %>
